@@ -34,7 +34,6 @@ jobs:
             pip install .
 
       - name: make openai key ebook test
-        if: env.BBM_DEEPL_API_KEY != null
         run: |
             python3 make_book.py --book_name "lemo.epub" --model gpt4 --language zh-hans
  
