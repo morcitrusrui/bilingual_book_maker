@@ -33,24 +33,6 @@ jobs:
         run: |
             pip install .
 
-      - name: make normal ebook test using google translate and cli
-        run: |
-            bbook_maker --book_name "test_books/Liber_Esther.epub" --test --test_num 10 --model google --translate-tags div,p
-            bbook_maker --book_name "test_books/Liber_Esther.epub" --test --test_num 20 --model google
-
-      - name: make txt book test using google translate
-        run: |
-          python3 make_book.py --book_name "test_books/the_little_prince.txt" --test --test_num 20 --model google
-
-      - name: make txt book test with batch_size
-        run: |
-          python3 make_book.py --book_name "test_books/the_little_prince.txt" --test --batch_size 30 --test_num 20 --model google
-  
-      - name: make caiyun translator test
-        if: env.BBM_CAIYUN_API_KEY != null
-        run: |
-          python3 make_book.py --book_name "test_books/the_little_prince.txt" --test --batch_size 30 --test_num 100 --model caiyun
-
       - name: make openai key ebook test
         if: env.BBM_DEEPL_API_KEY != null
         run: |
@@ -61,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: epub_output
-          path: "test_books/"
+          path: "lemo_bilingual.epub"
